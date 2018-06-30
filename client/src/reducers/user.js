@@ -42,7 +42,7 @@ export const handleLogout = history => {
         dispatch(setHeaders(headers));
         dispatch(logout());
         dispatch(setFlash('Logged out successfully!', 'green'));
-        history.push('/login');
+        history.push('/');
       })
       .catch(res => {
         let errors = res.response.data.errors ? res.response.data.errors : ['Something went wrong']

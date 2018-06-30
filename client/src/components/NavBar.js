@@ -11,20 +11,29 @@ class NavBar extends Component {
     if (user.id) {
       return (
         <Menu.Menu position='right'>
+          <Link to='/about'>
+            <Menu.Item name='About' />
+          </Link>
+          <Link to='/menu'>
+            <Menu.Item name='Menu' />
+          </Link>
+          <Link to='/stats'>
+            <Menu.Item name='Stats' />
+          </Link>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
         </Menu.Menu>
-      );
+      )
     }
     return (
       <Menu.Menu position='right'>
-        <Link to='/register'>
-          <Menu.Item name='Register' />
+        <Link to='/about'>
+          <Menu.Item name='About' />
         </Link>
-        <Link to='/login'>
-          <Menu.Item name='Login' />
+        <Link to='/menu'>
+          <Menu.Item name='Menu' />
         </Link>
       </Menu.Menu>
     );
