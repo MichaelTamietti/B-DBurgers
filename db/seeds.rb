@@ -4,4 +4,16 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first
+
+25.times do
+    name = Faker::Commerce.product_name
+    price = Faker::Commerce.price
+    
+
+    Item.create(
+      name: name,
+      price: price,
+      
+    )
+end
