@@ -18,6 +18,7 @@ class MenuList extends Component {
                     {item.name}
                   </Card.Header>
                 <Divider />
+                  <button onClick={() => updateItem(item.id)}>Delete</button>
                   <button onClick={() => deleteItem(item.id)}>Delete</button>
                 </Card.Content>
               </Card>

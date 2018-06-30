@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.create(:name, :price)
+    item = Item.create(item_params)
     render json: item
   end
 
@@ -16,6 +16,12 @@ class ItemsController < ApplicationController
 
   def destroy
     Item.find(params[:id]).destroy
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price)
   end
 
 end

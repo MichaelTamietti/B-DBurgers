@@ -12,6 +12,7 @@ import FetchUser from './FetchUser'
 import About from './About'
 import Menu from './Menu'
 import Stats from './Stats'
+import AdminMenu from './AdminMenu';
 
 class App extends Component {
   render() {
@@ -24,7 +25,8 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/about' component={About} />
             <Route exact path='/menu' component={Menu} />
-            <ProtectedRoute exact path='/stats' component={Stats} />
+            <ProtectedRoute exact path='/admin/stats' component={Stats} />
+            <ProtectedRoute exact path='/admin/menu' component={AdminMenu} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />

@@ -7,7 +7,7 @@ class ItemForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     let item = { ...this.state }
-    this.props.addItem(...item)
+    this.props.addItem(item)
     this.setState({ ...this.defaultValues })
   }
 
