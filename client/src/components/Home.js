@@ -15,10 +15,14 @@ const WelcomeHeader = styled.h1`
   color: #B11018;
 `
 
+const WelcomeSentence = styled.h3`
+  text-align: center;
+`
+
 const Home = () => (
   <div className="center">
     <WelcomeHeader>Welcome to B & D Burgers</WelcomeHeader>
-
+    <WelcomeSentence>Here Are Some Of Our Specials!</WelcomeSentence>
     <div className="ui two column grid">
       <div className="column">
         <div className="ui segment">
