@@ -7,7 +7,8 @@ import axios from 'axios'
 
 class Menu extends Component {
   state = {
-    shopItems: []
+    items: [],
+    shopItems: [],
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class Menu extends Component {
     <ItemForm addItem={this.addItem} />
   )
 
-  updateApp = (id) => {
+  updateItem = (id) => {
     this.showForm()
     let items = this.state.items.map(a => {
       if (a.id === id)
@@ -49,7 +50,7 @@ class Menu extends Component {
     this.setState({ items })
   }
 
-  deleteApp = (id) => {
+  deleteItem = (id) => {
     const { items } = this.state
     this.setState({ items: items.filter(a => a.id !== id) })
   }
@@ -57,8 +58,8 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <MenuList />
         <ShoppingCart items={this.state.shopItems} />
+        <MenuList items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem}/>
       </div>
     )
   }
