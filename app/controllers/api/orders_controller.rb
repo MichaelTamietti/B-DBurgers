@@ -1,13 +1,13 @@
-class Api::ItemsController < ApplicationController
+class Api::OrdersController < ApplicationController
 
   def index
-    render json: Item.all
+    render json: Order.all
   end
 
   def create
-    item = Item.new(item_params)
-    if item.save
-        render json: item
+    order = Order.new(item_params)
+    if order.save
+        render json: order
     else
         render json: { errors: item.errors }, status: :unprocessable_entity
     end
@@ -22,11 +22,5 @@ class Api::ItemsController < ApplicationController
       Item.find(params[:id]).destroy
       render json: { message: 'Item Deleted' }
   end
-
-  private
-
-  def item_params
-      params.require(:item).permit(:name, :price)
-  end 
 
 end
