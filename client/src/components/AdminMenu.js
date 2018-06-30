@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ShoppingCart from './ShoppingCart';
 import ItemForm from './ItemForm'
 import axios from 'axios'
 import MenuList from './MenuList';
+import UpdateForm from './UpdateForm';
 
 class AdminMenu extends Component {
   state = {
@@ -35,9 +35,13 @@ class AdminMenu extends Component {
     return <ItemForm addItem={this.addItem} />
   }
 
+  updateForm = (item) => {
+    return <UpdateForm updateItem={this.updateItem} item={item} />
+  }
+  
   // Update an item
-  updateItem = (id) => {
-    this.form()
+  updateItem = (id, item) => {
+    this.updateForm(item)
     let items = this.state.items.map(i => {
       if (i.id === id)
         return { ...i }
@@ -57,7 +61,7 @@ class AdminMenu extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.toggleForm}> {this.state.showForm ? 'Hide' : 'Show'}</button>
+        <button onClick={this.toggleForm}> {this.state.showForm ? 'Hide' : 'Add Item'}</button>
         {this.state.showForm && this.form()}
         <MenuList items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} />
       </div>
