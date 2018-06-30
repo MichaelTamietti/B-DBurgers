@@ -9,8 +9,10 @@ class Menu extends Component {
   state = {
     items: [],
     shopItems: [],
+    showForm: false,
   }
 
+  // When the menu is loaded, set state to equal everything in the rails database
   componentDidMount() {
     axios.get('/items')
       .then(res => {
@@ -18,46 +20,45 @@ class Menu extends Component {
       })
   }
 
-  addItem = (name, price) => {
-    let item = { name, price }
-    fetch('/items', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(item)
-    }).then(res => res.json())
-      .then(item => {
-        const { items } = this.state
-        this.setState({ items: [item, ...items] })
-      })
-
+  // Add the item to the database
+  addItem = (item) => {
+    axios.post('/items', { item })
+      .then(res => this.setState({ items: [res.data, ...this.state.items] }))
   }
 
-  showForm = () => (
-    <ItemForm addItem={this.addItem} />
-  )
+  // Show the form for adding or editing items
+  toggleForm = () => {
+    this.setState({ showForm: !this.state.showForm })
+  }
 
+  form = (type) => {
+    return <ItemForm addItem={this.addItem} updateItem={this.updateItem} type={type} />
+  }
+
+  // Update an item
   updateItem = (id) => {
-    this.showForm()
-    let items = this.state.items.map(a => {
-      if (a.id === id)
-        return { ...a }
-      return a
+    this.form(true)
+    let items = this.state.items.map(i => {
+      if (i.id === id)
+        return { ...i }
+      return i
     })
 
     this.setState({ items })
   }
 
+  // Delete an item
   deleteItem = (id) => {
     const { items } = this.state
-    this.setState({ items: items.filter(a => a.id !== id) })
+    axios.delete(`/items/${id}`)
+      .then(this.setState({ items: items.filter(i => i.id !== id) }))
   }
 
   render() {
     return (
       <div>
+        <button onClick={this.toggleForm}> {this.state.showForm ? 'Hide' : 'Show'}</button>
+        {this.state.showForm && this.form()}
         <ShoppingCart items={this.state.shopItems} />
         <MenuList items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem}/>
       </div>

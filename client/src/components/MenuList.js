@@ -1,37 +1,63 @@
 import React, { Component } from 'react'
-import { Card, Image, Divider } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
+import { Card, Divider } from 'semantic-ui-react';
+import { connect } from 'react-redux'
 
-const styles = {
-  image: {
-    height: 25,
-    width: 25,
-  },
-  card: {
-    maxWidth: 330,
+class MenuList extends Component {
+
+  menuItems = () => {
+    const { user, items, updateItem, deleteItem } = this.props
+    if (user.id) {
+      return (
+        <div>
+          <Card.Group itemsPerRow={4}>
+            {items.map(item =>
+              <Card key={item.id}>
+                <Card.Content>
+                  <Card.Header>
+                    {item.name}
+                  </Card.Header>
+                <Divider />
+                  <button onClick={() => updateItem(item.id)}>Update</button>
+                  <button onClick={() => deleteItem(item.id)}>Delete</button>
+                </Card.Content>
+              </Card>
+            )}
+          </Card.Group>
+        </div>
+      )
+    }
+    return (
+      <div>
+        <Card.Group itemsPerRow={4}>
+          {items.map(item =>
+            <Card key={item.id}>
+              <Card.Content>
+                <Card.Header>
+                  {item.name}
+                </Card.Header>
+              </Card.Content>
+            </Card>
+          )}
+        </Card.Group>
+      </div>
+    )
   }
+
+  render() {
+    return (
+      <div>
+        <Menu pointing secondary>
+          {this.menuItems()}
+        </Menu>
+      </div>
+    )
+  }
+} 
+
+
+const mapStateToProps = state => {
+  return { user: state.user }
 }
 
-const MenuList = ({ items, updateItem, deleteItem }) => (
-  <div>
-    <Card.Group itemsPerRow={4}>
-      {items.map(item =>
-        <Card key={item.id}>
-          <Card.Content>
-            <Card.Header>
-              {item.name}
-            </Card.Header>
-            if (user.id) {
-              <div>
-                <Divider />
-                <button onClick={updateItem}>Update</button>
-                <button onClick={deleteItem}>Delete</button>
-              </div>
-            }
-          </Card.Content>
-        </Card>
-      )}
-    </Card.Group>
-  </div>
-)
-
-export default MenuList
+export default (connect(mapStateToProps)(MenuList))
