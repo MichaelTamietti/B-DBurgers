@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react';
 import { Card, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux'
+import "./Menulist.css"
+
+
+const Color = {
+  background: "maroon",
+  color: "white",
+}
+
+
+const font = {
+  textAlign: "Center",
+  
+}
 
 class MenuList extends Component {
 
@@ -13,7 +26,7 @@ class MenuList extends Component {
           <Card.Group itemsPerRow={4}>
             {items.map(item =>
               <Card key={item.id}>
-                <Card.Content>
+                <Card.Content >
                   <Card.Header>
                     {item.name}
                   </Card.Header>
@@ -31,10 +44,10 @@ class MenuList extends Component {
       <div>
         <Card.Group itemsPerRow={4}>
           {items.map(item =>
-            <Card key={item.id}>
+            <Card key={item.id} className="SingleCard">
               <Card.Content>
-                <Card.Header>
-                  {item.name}
+                <Card.Header style={font}>
+                  {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.price}
                 </Card.Header>
               </Card.Content>
             </Card>
@@ -46,7 +59,7 @@ class MenuList extends Component {
 
   render() {
     return (
-      <div>
+      <div style={Color}>
         <Menu pointing secondary>
           {this.menuItems()}
         </Menu>
