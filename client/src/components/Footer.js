@@ -66,14 +66,15 @@ class Footer extends Component {
         
        </div>
      </div>
-     <div style= {styleBackground} className="column">
-       <div style= {styleBackground} className="ui segment">
-       <Link style={styles.styleButton} to='/register'>Admin</Link>
-       <Link style={styles.styleButton} to='https://www.facebook.com/BandDBurgers'><img src={facebookicon}/>Facebook</Link>
-
-       <h4 textAlign='Left'>© Copyright 2013 B&D Burger All Rights Reserved</h4>
-       </div>
-     </div>
+        <div style= {styleBackground} className="column">
+                <div style= {styleBackground} className="ui centered segment">
+                <Link style={styles.styleButton} to='/register'>Admin</Link>
+                <a href='https://www.facebook.com/BandDBurgers'>
+                    <img src={facebookicon}/>
+                </a>
+                <h4 textAlign='Left'>© Copyright 2013 B&D Burger All Rights Reserved</h4>
+            </div>
+        </div>
      </div>
 
 
