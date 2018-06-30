@@ -3,6 +3,32 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../reducers/user';
+import img from '../assets/imgs/B&DBurgers.png';
+
+
+
+const AppContainer = {
+ background: "maroon"
+}
+
+const Background = {
+  background: "light_yellow"
+}
+
+const FontColor = {
+  color: "white",
+  size: "14px"
+}
+
+const Content = {
+    border: '1px solid #000',
+    backgroundImage: `url(${img})`,
+    width: '200px',
+    height: '200px',
+}
+
+
+
 
 class NavBar extends Component {
   rightNavs = () => {
@@ -17,8 +43,8 @@ class NavBar extends Component {
           <Link to='/admin/stats'>
             <Menu.Item name='Stats' />
           </Link>
-          <Menu.Item
-            name='Logout'
+          <Menu.Item 
+            style={FontColor}name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
         </Menu.Menu>
@@ -27,10 +53,10 @@ class NavBar extends Component {
     return (
       <Menu.Menu position='right'>
         <Link to='/about'>
-          <Menu.Item name='About' />
+          <Menu.Item style={FontColor} name='About' />
         </Link>
         <Link to='/menu'>
-          <Menu.Item name='Menu' />
+          <Menu.Item style={FontColor} name='Menu' />
         </Link>
       </Menu.Menu>
     );
@@ -39,9 +65,9 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Menu pointing secondary>
+        <Menu style= {AppContainer} pointing secondary>
           <Link to='/'>
-            <Menu.Item name='home' />
+            <Menu.Item style={Content} />
           </Link>
           { this.rightNavs() }
         </Menu>
