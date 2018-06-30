@@ -1,26 +1,26 @@
 class Api::OrdersController < ApplicationController
-
+  
   def index
     render json: Order.all
   end
 
   def create
-    order = Order.new(item_params)
+    order = Order.new
     if order.save
-        render json: order
+      render json: order
     else
-        render json: { errors: item.errors }, status: :unprocessable_entity
+      render json: { errors: order.errors }, status: :unprocessable_entity
     end
   end
 
   def update
-    item = Item.find(params[:id])
-    render json: item
+    order = Order.find(params[:id])
+    render json: order
   end
 
   def destroy
-      Item.find(params[:id]).destroy
-      render json: { message: 'Item Deleted' }
+    Order.find(params[:id]).destroy
+    render json: { message: 'Order Deleted' }
   end
 
 end
