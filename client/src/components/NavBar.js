@@ -3,8 +3,8 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../reducers/user';
-// import img from '../assets/imgs/B&DBurgers.png';
-// import styled from 'styled_components';
+import img from '../assets/imgs/B&DBurgers.png';
+
 
 
 const AppContainer = {
@@ -20,12 +20,12 @@ const FontColor = {
   size: "14px"
 }
 
-// const Content = styled.div`
-//     border: 1px solid #000;
-//     background-image: url(${img});
-//     width: 2000px;
-//     height: 2000px;
-//     `
+const Content = {
+    border: '1px solid #000',
+    backgroundImage: `url(${img})`,
+    width: '200px',
+    height: '200px',
+}
 
 
 
@@ -70,7 +70,7 @@ class NavBar extends Component {
       <div>
         <Menu style= {AppContainer} pointing secondary>
           <Link to='/'>
-            <Menu.Item name='home' />
+            <Menu.Item style={Content} />
           </Link>
           { this.rightNavs() }
         </Menu>
