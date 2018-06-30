@@ -31,13 +31,13 @@ class Menu extends Component {
     this.setState({ showForm: !this.state.showForm })
   }
 
-  form = (type) => {
-    return <ItemForm addItem={this.addItem} updateItem={this.updateItem} type={type} />
+  form = () => {
+    return <ItemForm addItem={this.addItem} />
   }
 
   // Update an item
   updateItem = (id) => {
-    this.form(true)
+    this.form()
     let items = this.state.items.map(i => {
       if (i.id === id)
         return { ...i }
