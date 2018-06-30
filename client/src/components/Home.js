@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Header } from 'semantic-ui-react'
 import styled from 'styled-components'
 import burger1 from '../assets/imgs/bd1.png'
@@ -27,32 +28,44 @@ const Home = () => (
     <div className="ui two column grid">
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger1}/>
+            <Link to="/menu">
+              <img className="ui image" src={burger1}/>
+            </Link>
         </div>
       </div>
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger2}/>
+          <Link to="/menu">
+            <img className="ui image" src={burger2}/>
+          </Link>
         </div>
       </div>
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger3}/>
+          <Link to="/menu">
+            <img className="ui image" src={burger3}/>
+          </Link>
         </div>
       </div>
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger4}/>
+          <Link to="/menu">
+            <img className="ui image" src={burger4}/>
+          </Link>
         </div>
       </div>
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger5}/>
+          <Link to="/menu">
+            <img className="ui image" src={burger5}/>
+          </Link>
         </div>
       </div>
       <div className="column">
         <div className="ui segment">
-          <img className="ui image" src={burger7}/>
+          <Link to="/menu">
+            <img className="ui image" src={burger7}/>
+          </Link>
         </div>
       </div>
     </div>
