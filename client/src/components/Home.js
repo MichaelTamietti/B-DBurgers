@@ -19,6 +19,7 @@ const WelcomeSentence = styled.h3`
   text-align: center;
 `
 
+
 const Home = () => (
   <div className="center">
     <WelcomeHeader>Welcome to B & D Burgers</WelcomeHeader>
