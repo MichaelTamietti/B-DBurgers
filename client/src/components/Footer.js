@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Icon, Image } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import facebookicon from '../assets/imgs/facebookicon.png'
 
 
 const styleBackground = {
@@ -45,31 +46,38 @@ class Footer extends Component {
     }
 
     return (
-      <Grid>
-        <div style= {styleBackground}>
-        <h4 textAlign='Left'>University Location</h4>
-        <h4 textAlign='Left'>222 South 1300 East</h4>
-        <h6 textAlign='Left'>Ph:(801)582-7200</h6>
-        <h6 textAlign='Left'>Hours: Mon-Fri 10:30am-9:30p</h6>
-        <h6 textAlign='Left'>Sat-Sun 11:00am-9:00pm</h6>
-        </div>
-        <div style= {styleBackground}>
-        <h4 textAlign='Left'>Midvale</h4>
-        <h4 textAlign='Left'>7800 South State Street</h4>
-        <h6 textAlign='Left'>Ph:(801)582-7200</h6>
-        <h6 textAlign='Left'>Hours - Mon-Sat 11:00am-9:00pm</h6>
-        <h6 textAlign='Left'>© Copyright 2013 B&D Burger All Rights Reserved</h6>
-        </div>
-        <div style= {styleBackground}>
-        <Link style={styles.styleButton} to='/register'>Admin</Link>
-    </div >
+
+<div className="ui three column grid">
+     <div style= {styleBackground} className="column">
+       <div style= {styleBackground} className="ui segment">
+        <h3 textAlign='Left'>University Location</h3>
+        <h3 textAlign='Left'>222 South 1300 East</h3>
+        <h4 textAlign='Left'>Ph:(801)582-7200</h4>
+        <h4 textAlign='Left'>Hours: Mon-Fri 10:30am-9:30p</h4>
+        <h4 textAlign='Left'>Sat-Sun 11:00am-9:00pm</h4>
+       </div>
+     </div>
+     <div style= {styleBackground} className="column">
+       <div style= {styleBackground} className="ui segment">
+         <h3 textAlign='Left'>Midvale</h3>  
+        <h3 textAlign='Left'>7800 South State Street</h3>
+        <h4 textAlign='Left'>Ph:(801)582-7200</h4>
+        <h4 textAlign='Left'>Hours - Mon-Sat 11:00am-9:00pm</h4>
+        
+       </div>
+     </div>
+     <div style= {styleBackground} className="column">
+       <div style= {styleBackground} className="ui segment">
+       <Link style={styles.styleButton} to='/register'>Admin</Link>
+       <Link style={styles.styleButton} to='https://www.facebook.com/BandDBurgers'><img src={facebookicon}/>Facebook</Link>
+
+       <h4 textAlign='Left'>© Copyright 2013 B&D Burger All Rights Reserved</h4>
+       </div>
+     </div>
+     </div>
+
+
     
-    <div style= {styleBackground}></div>
-
-    <div class="grey row"></div>
-    <div style={styles.footerAlign}></div>
-
-    </Grid>
     );
   }
 
@@ -87,3 +95,5 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(connect(mapStateToProps)(Footer));
+
+
