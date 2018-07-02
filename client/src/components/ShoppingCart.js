@@ -23,12 +23,7 @@ class ShoppingCart extends Component {
     return (
       <div className="container">
         <div>
-          Here is where the button would go
-        </div>
-
-
-        <div>
-          This is where the items would go
+          Here is where the store would go
         </div>
       </div>
     );

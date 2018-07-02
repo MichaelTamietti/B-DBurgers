@@ -20,8 +20,8 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <ShoppingCart items={this.state.shopItems} />
         <MenuList items={this.state.items} />
+        <ShoppingCart items={this.state.shopItems} />
       </div>
     )
   }
